@@ -1,6 +1,6 @@
 # LibraLinks
 A whatsapp chat bot that provides you with pdf of books you want
-To install all necessary dependencies follow the links
+To install all necessary dependencies follow the links \n
 https://wwebjs.dev/guide/#installation
 If the client is not displaying "client is ready" Follow these steps
       It seems there is a problem with WhatsApp, in your node_modules folder, search
