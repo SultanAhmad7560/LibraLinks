@@ -18,7 +18,7 @@ client.on('message', message => {
  
 client.on('message', message => {
 	if(message.body === '!ping') {
-		message.reply('pong');
+		message.reply('we live, we love, we lie!!!');
 	}
 });
 client.initialize();
