@@ -58,6 +58,28 @@ client.on('message', message => {
 		console.log(`child process exited with code ${code}`);
 	  });
 	}
+
+	if(tokens[0] === '!ask')
+	{
+	  const prompt = tokens.slice(1).join(' ');
+	  console.log(prompt)
+	  client.sendMessage(message.from,'Welcome to LibraTalks');
+	  client.sendMessage(message.from,'Note that we use openai as our database');
+	  const childPython = spawn('python', ['AiBot.py', prompt]);
+		
+	  childPython.stdout.on('data', (data) => 
+	  {
+		client.sendMessage(message.from, data.toString());
+	  });
+  
+	  childPython.stderr.on('data', (data) => {
+		console.log(`stderr: ${data}`);
+	  });
+  
+	  childPython.on('close', (code) => {
+		console.log(`child process exited with code ${code}`);
+	  });
+	}
   });
 
 
