@@ -1,4 +1,4 @@
-import openai
+import openai # pip install openai
 import sys
 
 
