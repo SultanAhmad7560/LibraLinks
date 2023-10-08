@@ -1,5 +1,5 @@
 const spawn = require('child_process').spawn;
-
+flag = 0;
 const { get } = require('http');
 const qrcode = require('qrcode-terminal');
 
@@ -80,6 +80,60 @@ client.on('message', message => {
 		console.log(`child process exited with code ${code}`);
 	  });
 	}
+
+	if(tokens[0] === '!findAnime')
+	{
+		const animeName = tokens.slice(1).join(' ');
+		client.sendMessage(message.from,'Welcome to LibraAnime');
+		client.sendMessage(message.from,'Note that we use animerush as our database');
+		const childPython = spawn('python', ['AnimeBot.py',flag, animeName]);
+
+		childPython.stdout.on('data', (data) => 
+		{
+			client.sendMessage(message.from, data.toString());
+		});
+
+		childPython.stderr.on('data', (data) => {
+			console.log(`stderr: ${data}`);
+		});
+
+		childPython.on('close', (code) => {
+			console.log(`child process exited with code ${code}`);
+		});
+
+		client.sendMessage(message.from,'Please enter !DownAnime ($) (copy paste) the name of the anime you want to download followed by ($) episode number for example:!DownAnime $Attack on titan $1');
+
+
+	}
+
+	if(tokens[0] === '!DownAnime')
+	{
+			flag = 1;
+
+			
+			const tokens2 = message.body.split('$');
+			
+			
+
+			const childPython2 = spawn('python', ['AnimeBot.py',flag, tokens2[1], tokens2[2]]);
+			
+			childPython2.stdout.on('data', (data) => 
+			{
+				console.log(data.toString());
+				//client.sendMessage(message.from, data.toString());
+			});
+		
+			childPython2.stderr.on('data', (data) => {
+				console.log(`stderr: ${data}`);
+			});
+		
+			childPython2.on('close', (code) => {
+				console.log(`child process exited with code ${code}`);
+			});
+				
+			flag = 0;
+	}
+
   });
 
 
