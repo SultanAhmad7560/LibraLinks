@@ -4,7 +4,7 @@ import json
 from libgen_api import LibgenSearch
 
 
-
+print(sys.argv[1])
 
 tf = LibgenSearch()
 title_filters = {"Extension": "pdf", "Language": "English"}
