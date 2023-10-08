@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 import requests
+import sys
 stash = []
 
 def search_movie(id):
@@ -17,7 +18,7 @@ def search_movie(id):
     
     
     seperate_list = ('\n'.join(movie_list))
-    print(seperate_list)
+    return seperate_list
     
 
 
@@ -34,8 +35,16 @@ def url_movie(id):
             print(f"No movie found with ID: {id}")
     
     movielink = requests.get(f"https://web.fmoviesto.site{url}")
-    print(f"https://web.fmoviesto.site{url}")
-    return None
+ 
+    link = "https://web.fmoviesto.site" + url
+    return link
 
-search_movie("Hotel Transylvania")    
-url_movie("Hotel Transylvania: Puppy!")
+
+flag = str(sys.argv[1])
+
+if flag == "0":
+    list = search_movie(str(sys.argv[2]))
+    print(list)
+elif flag == "1":
+    url = url_movie(str(sys.argv[2]))
+    print(url)

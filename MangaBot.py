@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 import requests
+import sys
 
 
 def search_manga_name(id):
@@ -15,7 +16,7 @@ def search_manga_name(id):
              manga_list.append(title)
     
     seperate_list = ('\n'.join(manga_list))
-    print(seperate_list)
+
     return seperate_list
    
 def search_manga_url(id):
@@ -28,6 +29,14 @@ def search_manga_url(id):
         else:
             print(f"No manga found with ID: {id}")
     
-    print(f"https://readm.org{url}")
+    link = "https://readm.org" + url
+    return link
     
-search_manga_url("Solo Leveling")
+    
+flag = str(sys.argv[1])
+if flag == "0":
+    name = search_manga_name(str(sys.argv[2]))
+    print(name)
+elif flag == "1":
+    url = search_manga_url(str(sys.argv[2]))
+    print(url)

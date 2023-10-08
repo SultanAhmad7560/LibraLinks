@@ -84,8 +84,7 @@ if(str(sys.argv[1]) == "0"):
 elif(str(sys.argv[1]) == "1"):
     name = str(sys.argv[2])
     episode = str(sys.argv[3])
-    print(name)
-    print(episode)
+   
     search_anime(name)
     get_anime_episode(name, episode)
 
