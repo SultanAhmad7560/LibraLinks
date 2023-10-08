@@ -2,7 +2,7 @@ import openai # pip install openai
 import sys
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 prompt = str(sys.argv[1])
 
