@@ -1,5 +1,5 @@
 # LibraLinks
-A whatsapp chat bot that provides you with pdf of books you want <br/>
+A whatsapp chat bot that provides you with pdf of books, links for movies and animes aswell as Manga :) you want <br/>
 To install all necessary dependencies follow the links <br/>
 https://wwebjs.dev/guide/#installation <br/>
 If the client is not displaying "client is ready" Follow these steps <br/>
